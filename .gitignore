@@ -1,0 +1,61 @@
+# Xcode
+#
+# Build generated
+build/
+DerivedData/
+
+# Xcode project user data
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xcuserstate
+
+# Swift Package Manager
+Packages/
+Package.pins
+Package.resolved
+.swiftpm/
+
+# CocoaPods
+Pods/
+*.xcworkspace
+
+# Carthage
+Carthage/Build/
+
+# Accio dependency management
+Dependencies/
+.accio/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Code Injection / debugging
+iOSInjectionProject/
+
+# macOS system files
+.DS_Store
+
+# Temporary files
+*.swp
+*.lock
+*.tmp
+
+# Logs
+*.log
+
+# User-specific Xcode settings
+*.xcuserdatad
+
+# Ignore environment and secrets files if you ever add them
+.env
+.env.local
