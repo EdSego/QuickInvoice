@@ -1,6 +1,15 @@
-
 # Xcode user data
 *.xcuserdatad/
-*.xcscmblueprint
 *.xcuserstate
+*.xcscmblueprint
 
+# macOS system files
+.DS_Store
+
+# Swift Package Manager
+/.build/
+/Packages/
+/DerivedData/
+
+# User settings
+*.xcworkspace/xcuserdata/
