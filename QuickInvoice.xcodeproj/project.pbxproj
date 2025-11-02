@@ -6,17 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		BE0A2F0F2EB55237001BE296 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A2F0A2EB55237001BE296 /* ContentView.swift */; };
-		BE0A2F112EB55237001BE296 /* QuickInvoiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A2F0D2EB55237001BE296 /* QuickInvoiceApp.swift */; };
-		BE0A2F122EB55237001BE296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE0A2F092EB55237001BE296 /* Assets.xcassets */; };
-		BE0A2F222EB56A14001BE296 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A2F1F2EB55A18001BE296 /* Invoice.swift */; };
-		BE0A2F232EB56A1A001BE296 /* LineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A2F1E2EB55869001BE296 /* LineItem.swift */; };
-		BE0A2F242EB56A1F001BE296 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A2F1D2EB557DB001BE296 /* Client.swift */; };
-		BE0A2F252EB56A24001BE296 /* BusinessInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A2F1C2EB5565A001BE296 /* BusinessInfo.swift */; };
-		BE0A2F262EB56A29001BE296 /* PersonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0A2F1B2EB55408001BE296 /* PersonInfo.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		147A8C2C2EAB2A5C00DF9744 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -38,17 +27,25 @@
 		147A8C1E2EAB2A5B00DF9744 /* QuickInvoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickInvoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		147A8C2B2EAB2A5C00DF9744 /* QuickInvoiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickInvoiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		147A8C352EAB2A5C00DF9744 /* QuickInvoiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickInvoiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE0A2F092EB55237001BE296 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BE0A2F0A2EB55237001BE296 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		BE0A2F0D2EB55237001BE296 /* QuickInvoiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickInvoiceApp.swift; sourceTree = "<group>"; };
-		BE0A2F1B2EB55408001BE296 /* PersonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfo.swift; sourceTree = "<group>"; };
-		BE0A2F1C2EB5565A001BE296 /* BusinessInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInfo.swift; sourceTree = "<group>"; };
-		BE0A2F1D2EB557DB001BE296 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		BE0A2F1E2EB55869001BE296 /* LineItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineItem.swift; sourceTree = "<group>"; };
-		BE0A2F1F2EB55A18001BE296 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
-		BE0A2F202EB55FB6001BE296 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		BE0A2F212EB5617E001BE296 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		147A8C202EAB2A5B00DF9744 /* QuickInvoice */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = QuickInvoice;
+			sourceTree = "<group>";
+		};
+		147A8C2E2EAB2A5C00DF9744 /* QuickInvoiceTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = QuickInvoiceTests;
+			sourceTree = "<group>";
+		};
+		147A8C382EAB2A5C00DF9744 /* QuickInvoiceUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = QuickInvoiceUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		147A8C1B2EAB2A5B00DF9744 /* Frameworks */ = {
@@ -78,14 +75,9 @@
 		147A8C152EAB2A5B00DF9744 = {
 			isa = PBXGroup;
 			children = (
-				BE0A2F0D2EB55237001BE296 /* QuickInvoiceApp.swift */,
-				BE0A2F0A2EB55237001BE296 /* ContentView.swift */,
-				BE0A2F162EB55251001BE296 /* Models */,
-				BE0A2F172EB5528E001BE296 /* Views */,
-				BE0A2F182EB5529A001BE296 /* ViewModels */,
-				BE0A2F192EB552A4001BE296 /* Services */,
-				BE0A2F1A2EB552AE001BE296 /* Utilities */,
-				BE0A2F092EB55237001BE296 /* Assets.xcassets */,
+				147A8C202EAB2A5B00DF9744 /* QuickInvoice */,
+				147A8C2E2EAB2A5C00DF9744 /* QuickInvoiceTests */,
+				147A8C382EAB2A5C00DF9744 /* QuickInvoiceUITests */,
 				147A8C1F2EAB2A5B00DF9744 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,48 +90,6 @@
 				147A8C352EAB2A5C00DF9744 /* QuickInvoiceUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		BE0A2F162EB55251001BE296 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				BE0A2F1F2EB55A18001BE296 /* Invoice.swift */,
-				BE0A2F1E2EB55869001BE296 /* LineItem.swift */,
-				BE0A2F1D2EB557DB001BE296 /* Client.swift */,
-				BE0A2F1C2EB5565A001BE296 /* BusinessInfo.swift */,
-				BE0A2F1B2EB55408001BE296 /* PersonInfo.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		BE0A2F172EB5528E001BE296 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		BE0A2F182EB5529A001BE296 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		BE0A2F192EB552A4001BE296 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		BE0A2F1A2EB552AE001BE296 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				BE0A2F212EB5617E001BE296 /* Extensions.swift */,
-				BE0A2F202EB55FB6001BE296 /* Constants.swift */,
-			);
-			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +106,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				147A8C202EAB2A5B00DF9744 /* QuickInvoice */,
 			);
 			name = QuickInvoice;
 			packageProductDependencies = (
@@ -177,6 +130,9 @@
 			dependencies = (
 				147A8C2D2EAB2A5C00DF9744 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				147A8C2E2EAB2A5C00DF9744 /* QuickInvoiceTests */,
+			);
 			name = QuickInvoiceTests;
 			packageProductDependencies = (
 			);
@@ -197,6 +153,9 @@
 			dependencies = (
 				147A8C372EAB2A5C00DF9744 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				147A8C382EAB2A5C00DF9744 /* QuickInvoiceUITests */,
+			);
 			name = QuickInvoiceUITests;
 			packageProductDependencies = (
 			);
@@ -212,7 +171,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
-				LastUpgradeCheck = 2600;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					147A8C1D2EAB2A5B00DF9744 = {
 						CreatedOnToolsVersion = 16.4;
@@ -253,7 +212,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE0A2F122EB55237001BE296 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,13 +236,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE0A2F232EB56A1A001BE296 /* LineItem.swift in Sources */,
-				BE0A2F262EB56A29001BE296 /* PersonInfo.swift in Sources */,
-				BE0A2F112EB55237001BE296 /* QuickInvoiceApp.swift in Sources */,
-				BE0A2F222EB56A14001BE296 /* Invoice.swift in Sources */,
-				BE0A2F242EB56A1F001BE296 /* Client.swift in Sources */,
-				BE0A2F0F2EB55237001BE296 /* ContentView.swift in Sources */,
-				BE0A2F252EB56A24001BE296 /* BusinessInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +327,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -433,7 +383,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
