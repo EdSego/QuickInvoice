@@ -58,6 +58,7 @@
 		147A8C1E2EAB2A5B00DF9744 /* QuickInvoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = QuickInvoice.app; path = "/Users/bryanalarcon/Desktop/fall25/cpsc411/QuickInvoice/build/Debug-iphoneos/QuickInvoice.app"; sourceTree = "<absolute>"; };
 		147A8C2B2EAB2A5C00DF9744 /* QuickInvoiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = QuickInvoiceTests.xctest; path = "/Users/bryanalarcon/Desktop/fall25/cpsc411/QuickInvoice/build/Debug-iphoneos/QuickInvoice.app/PlugIns/QuickInvoiceTests.xctest"; sourceTree = "<absolute>"; };
 		147A8C352EAB2A5C00DF9744 /* QuickInvoiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = QuickInvoiceUITests.xctest; path = "/Users/bryanalarcon/Desktop/fall25/cpsc411/QuickInvoice/build/Debug-iphoneos/QuickInvoiceUITests-Runner.app/PlugIns/QuickInvoiceUITests.xctest"; sourceTree = "<absolute>"; };
+		BE513E922EB8731400A7E216 /* placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeholder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +97,7 @@
 		140D03322EB819D0004F66E1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				BE513E922EB8731400A7E216 /* placeholder.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
