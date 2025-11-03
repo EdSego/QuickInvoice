@@ -55,9 +55,9 @@
 		140D033A2EB819D0004F66E1 /* QuickInvoiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickInvoiceApp.swift; sourceTree = "<group>"; };
 		140D033B2EB819D0004F66E1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		140D033C2EB819D0004F66E1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		147A8C1E2EAB2A5B00DF9744 /* QuickInvoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickInvoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		147A8C2B2EAB2A5C00DF9744 /* QuickInvoiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickInvoiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		147A8C352EAB2A5C00DF9744 /* QuickInvoiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickInvoiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		147A8C1E2EAB2A5B00DF9744 /* QuickInvoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = QuickInvoice.app; path = "/Users/bryanalarcon/Desktop/fall25/cpsc411/QuickInvoice/build/Debug-iphoneos/QuickInvoice.app"; sourceTree = "<absolute>"; };
+		147A8C2B2EAB2A5C00DF9744 /* QuickInvoiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = QuickInvoiceTests.xctest; path = "/Users/bryanalarcon/Desktop/fall25/cpsc411/QuickInvoice/build/Debug-iphoneos/QuickInvoice.app/PlugIns/QuickInvoiceTests.xctest"; sourceTree = "<absolute>"; };
+		147A8C352EAB2A5C00DF9744 /* QuickInvoiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = QuickInvoiceUITests.xctest; path = "/Users/bryanalarcon/Desktop/fall25/cpsc411/QuickInvoice/build/Debug-iphoneos/QuickInvoiceUITests-Runner.app/PlugIns/QuickInvoiceUITests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,13 +93,11 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		140D03322EB819D0004F66E1 /* Invoice */ = {
+		140D03322EB819D0004F66E1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				140D03302EB819D0004F66E1 /* InvoiceListView.swift */,
-				140D03312EB819D0004F66E1 /* InvoiceListViewModel.swift */,
 			);
-			path = Invoice;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		140D03382EB819D0004F66E1 /* Models */ = {
@@ -126,34 +124,33 @@
 		147A8C152EAB2A5B00DF9744 = {
 			isa = PBXGroup;
 			children = (
-				140D032C2EB819D0004F66E1 /* Assets.xcassets */,
-				BE513E8E2EB86E8700A7E216 /* View */,
-				140D032F2EB819D0004F66E1 /* Helpers */,
-				140D03322EB819D0004F66E1 /* Invoice */,
+				140D033A2EB819D0004F66E1 /* QuickInvoiceApp.swift */,
 				140D03382EB819D0004F66E1 /* Models */,
+				BE513E912EB8723600A7E216 /* ViewModels */,
+				BE513E8E2EB86E8700A7E216 /* Views */,
+				140D032F2EB819D0004F66E1 /* Helpers */,
+				140D03322EB819D0004F66E1 /* Services */,
 				140D033D2EB819D0004F66E1 /* Utilities */,
-				147A8C1F2EAB2A5B00DF9744 /* Products */,
+				140D032C2EB819D0004F66E1 /* Assets.xcassets */,
 			);
 			sourceTree = "<group>";
 		};
-		147A8C1F2EAB2A5B00DF9744 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				147A8C1E2EAB2A5B00DF9744 /* QuickInvoice.app */,
-				147A8C2B2EAB2A5C00DF9744 /* QuickInvoiceTests.xctest */,
-				147A8C352EAB2A5C00DF9744 /* QuickInvoiceUITests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		BE513E8E2EB86E8700A7E216 /* View */ = {
+		BE513E8E2EB86E8700A7E216 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				140D03392EB819D0004F66E1 /* ProfileView.swift */,
 				140D032D2EB819D0004F66E1 /* ContentView.swift */,
-				140D033A2EB819D0004F66E1 /* QuickInvoiceApp.swift */,
 			);
-			path = View;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BE513E912EB8723600A7E216 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				140D03302EB819D0004F66E1 /* InvoiceListView.swift */,
+				140D03312EB819D0004F66E1 /* InvoiceListViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,7 +248,7 @@
 			mainGroup = 147A8C152EAB2A5B00DF9744;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 147A8C1F2EAB2A5B00DF9744 /* Products */;
+			productRefGroup = 147A8C152EAB2A5B00DF9744;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
