@@ -8,40 +8,39 @@
 import SwiftUI
 
 struct InvoiceListView: View {
+    @State private var showingNewInvoice = false
     //Share ViewModel globally across multiple views - dependency injection
     @EnvironmentObject var viewModel: InvoiceListViewModel
     //This way it will have to be initalized here
    // @StateObject var viewModel = InvoiceListViewModel()
 
     var body: some View {
-
         NavigationStack {
-            
-         
-            Text("Invoices will appear here")
-            Spacer()
-            
-                .toolbar {
-                    ToolbarItem(placement: .principal){
-                        Text("Invoices")
-                            .font(.system(size: 25,weight: .bold, design: .monospaced))
-                            .foregroundStyle(.primary)
-                            .padding(.top, 20)
-                    }
-                }
             VStack {
-            
+                Spacer()
                 
-                PrimaryButton(title: "Add Invoice",systemImage: "plus") {
-                    viewModel.addInvoice()
+                Text("Invoices will appear here")
+                    .foregroundColor(.secondary)
+                
+                Spacer()
+                
+                PrimaryButton(title: "Add Invoice", systemImage: "plus") {
+                    showingNewInvoice = true  // Changed this
                 }
-                
                 .padding(.horizontal)
                 .padding(.bottom, 20)
-         
             }
-            
-            
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Invoices")
+                        .font(.system(size: 25, weight: .bold, design: .monospaced))
+                        .foregroundStyle(.primary)
+                        .padding(.top, 20)
+                }
+            }
+            .sheet(isPresented: $showingNewInvoice) { // Added this
+                NewInvoiceView()
+            }
         }
     }
 }
