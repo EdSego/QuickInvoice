@@ -127,12 +127,10 @@
 			isa = PBXGroup;
 			children = (
 				140D032C2EB819D0004F66E1 /* Assets.xcassets */,
-				140D032D2EB819D0004F66E1 /* ContentView.swift */,
+				BE513E8E2EB86E8700A7E216 /* View */,
 				140D032F2EB819D0004F66E1 /* Helpers */,
 				140D03322EB819D0004F66E1 /* Invoice */,
 				140D03382EB819D0004F66E1 /* Models */,
-				140D03392EB819D0004F66E1 /* ProfileView.swift */,
-				140D033A2EB819D0004F66E1 /* QuickInvoiceApp.swift */,
 				140D033D2EB819D0004F66E1 /* Utilities */,
 				147A8C1F2EAB2A5B00DF9744 /* Products */,
 			);
@@ -146,6 +144,16 @@
 				147A8C352EAB2A5C00DF9744 /* QuickInvoiceUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BE513E8E2EB86E8700A7E216 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				140D03392EB819D0004F66E1 /* ProfileView.swift */,
+				140D032D2EB819D0004F66E1 /* ContentView.swift */,
+				140D033A2EB819D0004F66E1 /* QuickInvoiceApp.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

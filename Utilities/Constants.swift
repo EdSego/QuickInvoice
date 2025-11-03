@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum Constants {
-    static let invoicePrefix: "invoice"
+    static let invoicePrefix = "invoice"
     
     static let incoiceStartNumber = 1
     
@@ -26,9 +26,9 @@ enum Constants {
     static let requiredFieldColor = Color.red
     
     static let titleFont: Font = .largeTitle.bold()
-    static let headerFont: Font = .headline()
-    static let bodyFont: Font = .body()
-    static let captionFont: Font = .caption()
+    static let headerFont: Font = .headline
+    static let bodyFont: Font = .body
+    static let captionFont: Font = .caption
     
     static let requiredFieldMessage = "Required"
     static let invalidEmailMessage = "Invalid Email"

@@ -21,7 +21,7 @@ extension String {
 
 extension Double {
     var toCents: Int {
-        return Int(rounded(self * 100))
+        return Int((self * 100).rounded())
     }
     
     var asCurrency: String {
