@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct InvoiceListView: View {
-    @StateObject private var viewModel: InvoiceListViewModel
-    
-    init() {
-        _viewModel = StateObject(wrappedValue: InvoiceListViewModel())
-    }
-    
+    //Share ViewModel globally across multiple views - dependency injection
+    @EnvironmentObject var viewModel: InvoiceListViewModel
+    //This way it will have to be initalized here
+   // @StateObject var viewModel = InvoiceListViewModel()
+
     var body: some View {
 
         NavigationStack {

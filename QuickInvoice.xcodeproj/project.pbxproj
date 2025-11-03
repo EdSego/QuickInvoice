@@ -21,6 +21,8 @@
 		140D03492EB819D0004F66E1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D033B2EB819D0004F66E1 /* Constants.swift */; };
 		140D034A2EB819D0004F66E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D032D2EB819D0004F66E1 /* ContentView.swift */; };
 		140D034B2EB819D0004F66E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 140D032C2EB819D0004F66E1 /* Assets.xcassets */; };
+		14FA10052EB878B400A462A6 /* PersonalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10042EB878B400A462A6 /* PersonalInfoView.swift */; };
+		14FA10072EB878DB00A462A6 /* BusinessInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10062EB878DB00A462A6 /* BusinessInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +57,11 @@
 		140D033A2EB819D0004F66E1 /* QuickInvoiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickInvoiceApp.swift; sourceTree = "<group>"; };
 		140D033B2EB819D0004F66E1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		140D033C2EB819D0004F66E1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		147A8C1E2EAB2A5B00DF9744 /* QuickInvoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = QuickInvoice.app; path = "/Users/bryanalarcon/Desktop/fall25/cpsc411/QuickInvoice/build/Debug-iphoneos/QuickInvoice.app"; sourceTree = "<absolute>"; };
-		147A8C2B2EAB2A5C00DF9744 /* QuickInvoiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = QuickInvoiceTests.xctest; path = "/Users/bryanalarcon/Desktop/fall25/cpsc411/QuickInvoice/build/Debug-iphoneos/QuickInvoice.app/PlugIns/QuickInvoiceTests.xctest"; sourceTree = "<absolute>"; };
-		147A8C352EAB2A5C00DF9744 /* QuickInvoiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = QuickInvoiceUITests.xctest; path = "/Users/bryanalarcon/Desktop/fall25/cpsc411/QuickInvoice/build/Debug-iphoneos/QuickInvoiceUITests-Runner.app/PlugIns/QuickInvoiceUITests.xctest"; sourceTree = "<absolute>"; };
+		14FA10012EB873C500A462A6 /* QuickInvoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickInvoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14FA10022EB873C500A462A6 /* QuickInvoiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickInvoiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14FA10032EB873C500A462A6 /* QuickInvoiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickInvoiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14FA10042EB878B400A462A6 /* PersonalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoView.swift; sourceTree = "<group>"; };
+		14FA10062EB878DB00A462A6 /* BusinessInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInfoView.swift; sourceTree = "<group>"; };
 		BE513E922EB8731400A7E216 /* placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeholder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,13 +138,19 @@
 				140D03322EB819D0004F66E1 /* Services */,
 				140D033D2EB819D0004F66E1 /* Utilities */,
 				140D032C2EB819D0004F66E1 /* Assets.xcassets */,
+				14FA10012EB873C500A462A6 /* QuickInvoice.app */,
+				14FA10022EB873C500A462A6 /* QuickInvoiceTests.xctest */,
+				14FA10032EB873C500A462A6 /* QuickInvoiceUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
 		BE513E8E2EB86E8700A7E216 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				140D03302EB819D0004F66E1 /* InvoiceListView.swift */,
 				140D03392EB819D0004F66E1 /* ProfileView.swift */,
+				14FA10062EB878DB00A462A6 /* BusinessInfoView.swift */,
+				14FA10042EB878B400A462A6 /* PersonalInfoView.swift */,
 				140D032D2EB819D0004F66E1 /* ContentView.swift */,
 			);
 			path = Views;
@@ -149,7 +159,6 @@
 		BE513E912EB8723600A7E216 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				140D03302EB819D0004F66E1 /* InvoiceListView.swift */,
 				140D03312EB819D0004F66E1 /* InvoiceListViewModel.swift */,
 			);
 			path = ViewModels;
@@ -174,7 +183,7 @@
 			packageProductDependencies = (
 			);
 			productName = QuickInvoice;
-			productReference = 147A8C1E2EAB2A5B00DF9744 /* QuickInvoice.app */;
+			productReference = 14FA10012EB873C500A462A6 /* QuickInvoice.app */;
 			productType = "com.apple.product-type.application";
 		};
 		147A8C2A2EAB2A5C00DF9744 /* QuickInvoiceTests */ = {
@@ -194,7 +203,7 @@
 			packageProductDependencies = (
 			);
 			productName = QuickInvoiceTests;
-			productReference = 147A8C2B2EAB2A5C00DF9744 /* QuickInvoiceTests.xctest */;
+			productReference = 14FA10022EB873C500A462A6 /* QuickInvoiceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		147A8C342EAB2A5C00DF9744 /* QuickInvoiceUITests */ = {
@@ -214,7 +223,7 @@
 			packageProductDependencies = (
 			);
 			productName = QuickInvoiceUITests;
-			productReference = 147A8C352EAB2A5C00DF9744 /* QuickInvoiceUITests.xctest */;
+			productReference = 14FA10032EB873C500A462A6 /* QuickInvoiceUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -301,8 +310,10 @@
 				140D03452EB819D0004F66E1 /* QuickInvoiceApp.swift in Sources */,
 				140D03462EB819D0004F66E1 /* LineItem.swift in Sources */,
 				140D03472EB819D0004F66E1 /* ProfileView.swift in Sources */,
+				14FA10052EB878B400A462A6 /* PersonalInfoView.swift in Sources */,
 				140D03482EB819D0004F66E1 /* InvoiceListViewModel.swift in Sources */,
 				140D03492EB819D0004F66E1 /* Constants.swift in Sources */,
+				14FA10072EB878DB00A462A6 /* BusinessInfoView.swift in Sources */,
 				140D034A2EB819D0004F66E1 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +474,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YD85Q2SAT2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -491,6 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YD85Q2SAT2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

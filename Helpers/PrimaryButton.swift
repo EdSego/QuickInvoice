@@ -26,8 +26,8 @@ struct PrimaryButton: View {
                     .font(.headline)
             }
                         .foregroundColor(.white)
-                       .padding(.vertical, 12)
-                       .padding(.horizontal, 20)
+                       .padding(.vertical, 16)
+                       .padding(.horizontal, 24)
                        .frame(maxWidth: .infinity)
                        .background(color)
                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
@@ -36,3 +36,32 @@ struct PrimaryButton: View {
         .buttonStyle(.plain)
     }
 }
+
+struct NavigationPrimaryButton<Destination: View>: View {
+    var title: String
+    var systemImage: String? = nil
+    var color: Color = .blue
+    var destination: Destination
+
+    var body: some View {
+        NavigationLink(destination: destination) {
+            HStack {
+                if let icon = systemImage {
+                    Image(systemName: icon)
+                        .imageScale(.medium)
+                }
+                Text(title)
+                    .font(.headline)
+            }
+            .foregroundColor(.white)
+            .padding(.vertical, 16)           // same sizing as PrimaryButton
+            .padding(.horizontal, 24)
+            .frame(maxWidth: .infinity)
+            .background(color)
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .shadow(color: color.opacity(0.3), radius: 6, x: 0, y: 3)
+        }
+        .buttonStyle(.plain)
+    }
+}
+

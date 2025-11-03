@@ -21,12 +21,14 @@ enum Constants {
     
     static let primaryColor = Color.blue
     static let accentColor = Color.red
+    
     // backgroud for forms
     static let backgroundColor = Color(.systemGroupedBackground)
     static let requiredFieldColor = Color.red
     
     static let titleFont: Font = .largeTitle.bold()
     static let headerFont: Font = .headline
+    
     static let bodyFont: Font = .body
     static let captionFont: Font = .caption
     
