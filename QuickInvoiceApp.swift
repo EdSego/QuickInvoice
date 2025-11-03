@@ -11,6 +11,8 @@ import SwiftData
 @main
 struct QuickInvoiceApp: App {
     let modelContainer: ModelContainer
+    @StateObject private var invoiceListVM = InvoiceListViewModel()
+
     
     init() {
         do {
@@ -25,11 +27,14 @@ struct QuickInvoiceApp: App {
             fatalError("Failed to initialize ModelContainer: \(error)")
         }
     }
+    
+    
         
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
         .modelContainer(modelContainer)
+        .environmentObject(invoiceListVM)
     }
 }
