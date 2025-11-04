@@ -38,8 +38,8 @@ struct InvoiceListView: View {
                         .padding(.top, 20)
                 }
             }
-            .sheet(isPresented: $showingNewInvoice) { // Added this
-                NewInvoiceView()
+            .sheet(isPresented: $showingNewInvoice) {
+                NewInvoiceView()  
             }
         }
     }

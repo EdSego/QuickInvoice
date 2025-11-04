@@ -9,126 +9,100 @@ import SwiftUI
 import SwiftData
 
 struct NewInvoiceView: View {
-    // Access to database
     @Environment(\.modelContext) private var modelContext
-    // Dismiss this view (goback)
     @Environment(\.dismiss) private var dismiss
     
-    // Invoice details
-    @State private var invoiceDate = Date()
-    @State private var jobNumber: String = ""
+    @State private var viewModel: NewInvoiceViewModel?
     
-    @State private var client: Client? = nil
-    @State private var showingClientForm = false
-    
-    @State private var lineItems: [LineItem] = []
-    @State private var showingItemForm = false
-    
-    @State private var showingError = false
-    @State private var errorMessage  = ""
-    
-    private var totalAmount: Double {
-        lineItems.reduce(0) { $0 + $1.itemPrice }
-    }
-    
-    private var formattedTotal: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = "USD"
-        return formatter.string(from: NSNumber(value: totalAmount)) ?? "$0.00"
-    }
+    // MARK: - Body
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing:24){
-                    VStack(alignment: .center, spacing:16){
-                        Text("Invoice Details")
-                            .font(Constants.headerFont)
-                        HStack(spacing: 12) {
-                            Text("Date")
-                                .font(Constants.bodyFont)
-                            Text("*").foregroundColor(Color(.systemRed))
+            if let viewModel = viewModel {
+                invoiceFormContent(viewModel: viewModel)
+            } else {
+                ProgressView()
+                    .onAppear {
+                        // Initialize viewModel with modelContext from environment
+                        self.viewModel = NewInvoiceViewModel(modelContext: modelContext)
+                    }
+            }
+        }
+    }
+    
+    // MARK: - Content View
+    
+    @ViewBuilder
+    private func invoiceFormContent(viewModel: NewInvoiceViewModel) -> some View {
+        ScrollView {
+            VStack(spacing: 24) {
+                
+                // MARK: - Invoice Details Section
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("Invoice Details")
+                        .font(Constants.headerFont)
+                    
+                    HStack(spacing: 12) {
+                        // Date
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("Date")
+                                    .font(Constants.bodyFont)
+                                Text("*")
+                                    .foregroundColor(.red)
+                            }
                             DatePicker(
-                                "Start Date",
-                                selection: $invoiceDate,
+                                "Invoice Date",
+                                selection: Binding(
+                                    get: { viewModel.invoiceDate },
+                                    set: { viewModel.invoiceDate = $0 }
+                                ),
                                 displayedComponents: .date
-                            ).datePickerStyle(.compact)
-                                .labelsHidden()
-                            
+                            )
+                            .datePickerStyle(.compact)
+                            .labelsHidden()
+                        }
+                        
+                        Spacer()
+                        
+                        // Job Number
+                        VStack(alignment: .leading) {
                             Text("Job #")
                                 .font(Constants.bodyFont)
-                            TextField("", text: $jobNumber)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .frame(maxWidth: 120 )
+                            TextField("Optional", text: Binding(
+                                get: { viewModel.jobNumber },
+                                set: { viewModel.jobNumber = $0 }
+                            ))
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .frame(width: 120)
                         }
                     }
-                }.padding()
-                    .background(Color(.systemBackground))
-                    .cornerRadius(12)
-                    .shadow(color: .black.opacity(0.15), radius: 5)
-                
-                VStack(alignment: .center, spacing:16){
-                    HStack(alignment: .center, spacing:16){
-                        Text("Client")
-                            .font(Constants.bodyFont)
-                        Text("*")
-                            .foregroundColor(Color(.systemRed))
-                            .font(Constants.bodyFont)
-                        Spacer()
-                        
-                        if let client = client {
-                            // Show client details
-                            ClientInfoCard(client: client) {
-                                // Edit/remove client
-                                self.client = nil
-                            }
-                        } else {
-                            // "+ Client" button
-                            Button(action: {
-                                showingClientForm = true
-                            }) {
-                                HStack {
-                                    Image(systemName: "plus.circle.fill")
-                                    Text("Add Client")
-                                        .fontWeight(.medium)
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.blue.opacity(0.1))
-                                .foregroundColor(.blue)
-                                .cornerRadius(10)
-                            }
-                        }
-                    }.padding()
-                        .background(Color(.systemBackground))
-                        .cornerRadius(12)
-                        .shadow(color: .black.opacity(0.15), radius: 5)
                 }
-                VStack(alignment: .center, spacing:16){
-                    HStack(alignment: .center, spacing:16){
-                        Text("Item/Service")
-                            .font(Constants.bodyFont)
+                .padding()
+                .background(Color(.systemBackground))
+                .cornerRadius(12)
+                .shadow(color: .black.opacity(0.05), radius: 5)
+                
+                // MARK: - Client Section
+                VStack(alignment: .leading, spacing: 16) {
+                    HStack {
+                        Text("Client")
+                            .font(Constants.headerFont)
                         Text("*")
-                            .foregroundColor(Color(.systemRed))
-                            .font(Constants.bodyFont)
-                        Spacer()
-                        
-                        if !lineItems.isEmpty {
-                            ForEach(Array(lineItems.enumerated()), id: \.offset) { index, item in
-                                LineItemCard(item: item) {
-                                    // Remove this item
-                                    lineItems.remove(at: index)
-                                    // Update sort order for remaining items
-                                }
-                            }
+                            .foregroundColor(.red)
+                    }
+                    
+                    if let client = viewModel.client {
+                        ClientInfoCard(client: client) {
+                            viewModel.removeClient()
                         }
+                    } else {
                         Button(action: {
-                            showingItemForm = true
+                            viewModel.showingClientForm = true
                         }) {
                             HStack {
                                 Image(systemName: "plus.circle.fill")
-                                Text("Add Item/Service")
+                                Text("Add Client")
                                     .fontWeight(.medium)
                             }
                             .frame(maxWidth: .infinity)
@@ -138,34 +112,116 @@ struct NewInvoiceView: View {
                             .cornerRadius(10)
                         }
                     }
-                }.padding()
-                    .background(Color(.systemBackground))
-                    .cornerRadius(12)
-                    .shadow(color: .black.opacity(0.15), radius: 5)
+                }
+                .padding()
+                .background(Color(.systemBackground))
+                .cornerRadius(12)
+                .shadow(color: .black.opacity(0.05), radius: 5)
                 
+                // MARK: - Items Section
+                VStack(alignment: .leading, spacing: 16) {
+                    HStack {
+                        Text("Items & Services")
+                            .font(Constants.headerFont)
+                        Text("*")
+                            .foregroundColor(.red)
+                    }
+                    
+                    if !viewModel.lineItems.isEmpty {
+                        ForEach(Array(viewModel.lineItems.enumerated()), id: \.offset) { index, item in
+                            LineItemCard(item: item) {
+                                viewModel.removeLineItem(at: index)
+                            }
+                        }
+                    }
+                    
+                    Button(action: {
+                        viewModel.showingItemForm = true
+                    }) {
+                        HStack {
+                            Image(systemName: "plus.circle.fill")
+                            Text("Add Item/Service")
+                                .fontWeight(.medium)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue.opacity(0.1))
+                        .foregroundColor(.blue)
+                        .cornerRadius(10)
+                    }
+                }
+                .padding()
+                .background(Color(.systemBackground))
+                .cornerRadius(12)
+                .shadow(color: .black.opacity(0.05), radius: 5)
+                
+                // MARK: - Total Section
                 VStack(alignment: .leading, spacing: 8) {
-                                        HStack {
-                                            Text("Total")
-                                                .font(.headline)
-                                            Spacer()
-                                            Text(formattedTotal)
-                                                .font(.title2)
-                                                .fontWeight(.bold)
-                                                .foregroundColor(.blue)
-                                        }
-                                    }
-                                    .padding()
-                                    .background(Color(.systemBackground))
-                                    .cornerRadius(12)
-                                    .shadow(color: .black.opacity(0.15), radius: 5)
+                    HStack {
+                        Text("Total")
+                            .font(.headline)
+                        Spacer()
+                        Text(viewModel.formattedTotal)
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.blue)
+                    }
+                }
+                .padding()
+                .background(Color(.systemBackground))
+                .cornerRadius(12)
+                .shadow(color: .black.opacity(0.05), radius: 5)
+                
+                Color.clear.frame(height: 20)
+            }
+            .padding()
+        }
+        .background(Color(.systemGroupedBackground))
+        .navigationTitle("New Invoice")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Cancel") {
+                    dismiss()
+                }
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Create") {
+                    if viewModel.createInvoice() {
+                        dismiss()
+                    }
+                }
+                .fontWeight(.semibold)
             }
         }
-    }
-    private func updateSortOrder() {
-        lineItems.indices.forEach { lineItems[$0].sortOrder = $0 }
+        .alert("Error", isPresented: Binding(
+            get: { viewModel.showingError },
+            set: { viewModel.showingError = $0 }
+        )) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(viewModel.errorMessage)
+        }
+        .sheet(isPresented: Binding(
+            get: { viewModel.showingClientForm },
+            set: { viewModel.showingClientForm = $0 }
+        )) {
+            Text("Client Form Coming Soon")
+                .font(.title)
+        }
+        .sheet(isPresented: Binding(
+            get: { viewModel.showingItemForm },
+            set: { viewModel.showingItemForm = $0 }
+        )) {
+            Text("Item Form Coming Soon")
+                .font(.title)
+        }
     }
 }
 
+
+// MARK: - Supporting Views
 
 struct ClientInfoCard: View {
     let client: Client
@@ -244,4 +300,5 @@ struct LineItemCard: View {
 
 #Preview {
     NewInvoiceView()
+        .modelContainer(for: Invoice.self)
 }

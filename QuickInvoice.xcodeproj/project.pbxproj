@@ -24,6 +24,7 @@
 		14FA10052EB878B400A462A6 /* PersonalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10042EB878B400A462A6 /* PersonalInfoView.swift */; };
 		14FA10072EB878DB00A462A6 /* BusinessInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10062EB878DB00A462A6 /* BusinessInfoView.swift */; };
 		BE513EA82EB9550600A7E216 /* NewInvoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE513EA72EB9550600A7E216 /* NewInvoiceView.swift */; };
+		BE513EAB2EB9AB0E00A7E216 /* NewInvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE513EAA2EB9AAFE00A7E216 /* NewInvoiceViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		BE513EA62EB954FA00A7E216 /* QuickInvoiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = QuickInvoiceUITests.xctest; path = "/Users/bryanalarcon/Desktop/fall25/cpsc411/QuickInvoice/build/Debug-iphoneos/QuickInvoiceUITests-Runner.app/PlugIns/QuickInvoiceUITests.xctest"; sourceTree = "<absolute>"; };
 		BE513EA72EB9550600A7E216 /* NewInvoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInvoiceView.swift; sourceTree = "<group>"; };
 		BE513EA92EB99B7500A7E216 /* QuickInvoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickInvoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE513EAA2EB9AAFE00A7E216 /* NewInvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInvoiceViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 		BE513E912EB8723600A7E216 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				BE513EAA2EB9AAFE00A7E216 /* NewInvoiceViewModel.swift */,
 				140D03312EB819D0004F66E1 /* InvoiceListViewModel.swift */,
 			);
 			path = ViewModels;
@@ -310,6 +313,7 @@
 				140D03432EB819D0004F66E1 /* PersonInfo.swift in Sources */,
 				140D03442EB819D0004F66E1 /* Client.swift in Sources */,
 				140D03452EB819D0004F66E1 /* QuickInvoiceApp.swift in Sources */,
+				BE513EAB2EB9AB0E00A7E216 /* NewInvoiceViewModel.swift in Sources */,
 				140D03462EB819D0004F66E1 /* LineItem.swift in Sources */,
 				140D03472EB819D0004F66E1 /* ProfileView.swift in Sources */,
 				14FA10052EB878B400A462A6 /* PersonalInfoView.swift in Sources */,
