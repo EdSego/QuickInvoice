@@ -21,8 +21,10 @@
 		140D03492EB819D0004F66E1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D033B2EB819D0004F66E1 /* Constants.swift */; };
 		140D034A2EB819D0004F66E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D032D2EB819D0004F66E1 /* ContentView.swift */; };
 		140D034B2EB819D0004F66E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 140D032C2EB819D0004F66E1 /* Assets.xcassets */; };
+		141CE5312EC43B2A0058B6EA /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CE5302EC43B120058B6EA /* FormTextField.swift */; };
 		14FA10052EB878B400A462A6 /* PersonalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10042EB878B400A462A6 /* PersonalInfoView.swift */; };
 		14FA10072EB878DB00A462A6 /* BusinessInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10062EB878DB00A462A6 /* BusinessInfoView.swift */; };
+		14FA10152EB9BAF100A462A6 /* PersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10142EB9BAF100A462A6 /* PersonalInfoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,12 +59,14 @@
 		140D033A2EB819D0004F66E1 /* QuickInvoiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickInvoiceApp.swift; sourceTree = "<group>"; };
 		140D033B2EB819D0004F66E1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		140D033C2EB819D0004F66E1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		141CE5302EC43B120058B6EA /* FormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
 		14FA10042EB878B400A462A6 /* PersonalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoView.swift; sourceTree = "<group>"; };
 		14FA10062EB878DB00A462A6 /* BusinessInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInfoView.swift; sourceTree = "<group>"; };
+		14FA10112EB9B75B00A462A6 /* QuickInvoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickInvoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14FA10122EB9B75B00A462A6 /* QuickInvoiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickInvoiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14FA10132EB9B75B00A462A6 /* QuickInvoiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickInvoiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14FA10142EB9BAF100A462A6 /* PersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewModel.swift; sourceTree = "<group>"; };
 		BE513E922EB8731400A7E216 /* placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeholder.swift; sourceTree = "<group>"; };
-		BE513E9F2EB952F700A7E216 /* QuickInvoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = QuickInvoice.app; path = "/Users/bryanalarcon/Desktop/fall25/cpsc411/QuickInvoice/build/Debug-iphoneos/QuickInvoice.app"; sourceTree = "<absolute>"; };
-		BE513EA02EB952F700A7E216 /* QuickInvoiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = QuickInvoiceTests.xctest; path = "/Users/bryanalarcon/Desktop/fall25/cpsc411/QuickInvoice/build/Debug-iphoneos/QuickInvoice.app/PlugIns/QuickInvoiceTests.xctest"; sourceTree = "<absolute>"; };
-		BE513EA12EB952F700A7E216 /* QuickInvoiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = QuickInvoiceUITests.xctest; path = "/Users/bryanalarcon/Desktop/fall25/cpsc411/QuickInvoice/build/Debug-iphoneos/QuickInvoiceUITests-Runner.app/PlugIns/QuickInvoiceUITests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 		140D032F2EB819D0004F66E1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				141CE5302EC43B120058B6EA /* FormTextField.swift */,
 				140D032E2EB819D0004F66E1 /* PrimaryButton.swift */,
 			);
 			path = Helpers;
@@ -138,6 +143,9 @@
 				140D03322EB819D0004F66E1 /* Services */,
 				140D033D2EB819D0004F66E1 /* Utilities */,
 				140D032C2EB819D0004F66E1 /* Assets.xcassets */,
+				14FA10112EB9B75B00A462A6 /* QuickInvoice.app */,
+				14FA10122EB9B75B00A462A6 /* QuickInvoiceTests.xctest */,
+				14FA10132EB9B75B00A462A6 /* QuickInvoiceUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				140D03312EB819D0004F66E1 /* InvoiceListViewModel.swift */,
+				14FA10142EB9BAF100A462A6 /* PersonalInfoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -180,7 +189,7 @@
 			packageProductDependencies = (
 			);
 			productName = QuickInvoice;
-			productReference = BE513E9F2EB952F700A7E216 /* QuickInvoice.app */;
+			productReference = 14FA10112EB9B75B00A462A6 /* QuickInvoice.app */;
 			productType = "com.apple.product-type.application";
 		};
 		147A8C2A2EAB2A5C00DF9744 /* QuickInvoiceTests */ = {
@@ -200,7 +209,7 @@
 			packageProductDependencies = (
 			);
 			productName = QuickInvoiceTests;
-			productReference = BE513EA02EB952F700A7E216 /* QuickInvoiceTests.xctest */;
+			productReference = 14FA10122EB9B75B00A462A6 /* QuickInvoiceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		147A8C342EAB2A5C00DF9744 /* QuickInvoiceUITests */ = {
@@ -220,7 +229,7 @@
 			packageProductDependencies = (
 			);
 			productName = QuickInvoiceUITests;
-			productReference = BE513EA12EB952F700A7E216 /* QuickInvoiceUITests.xctest */;
+			productReference = 14FA10132EB9B75B00A462A6 /* QuickInvoiceUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -299,11 +308,13 @@
 			files = (
 				140D033E2EB819D0004F66E1 /* PrimaryButton.swift in Sources */,
 				140D033F2EB819D0004F66E1 /* BusinessInfo.swift in Sources */,
+				14FA10152EB9BAF100A462A6 /* PersonalInfoViewModel.swift in Sources */,
 				140D03402EB819D0004F66E1 /* Extensions.swift in Sources */,
 				140D03412EB819D0004F66E1 /* InvoiceListView.swift in Sources */,
 				140D03422EB819D0004F66E1 /* Invoice.swift in Sources */,
 				140D03432EB819D0004F66E1 /* PersonInfo.swift in Sources */,
 				140D03442EB819D0004F66E1 /* Client.swift in Sources */,
+				141CE5312EC43B2A0058B6EA /* FormTextField.swift in Sources */,
 				140D03452EB819D0004F66E1 /* QuickInvoiceApp.swift in Sources */,
 				140D03462EB819D0004F66E1 /* LineItem.swift in Sources */,
 				140D03472EB819D0004F66E1 /* ProfileView.swift in Sources */,
