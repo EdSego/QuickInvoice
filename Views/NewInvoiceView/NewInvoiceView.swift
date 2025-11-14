@@ -13,9 +13,7 @@ struct NewInvoiceView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var viewModel: NewInvoiceViewModel?
-    
-    // MARK: - Body
-    
+        
     var body: some View {
         NavigationStack {
             if let viewModel = viewModel {
@@ -29,20 +27,18 @@ struct NewInvoiceView: View {
             }
         }
     }
-    
-    // MARK: - Content View
-    
+        
     @ViewBuilder
     private func invoiceFormContent(viewModel: NewInvoiceViewModel) -> some View {
         ScrollView {
             VStack(spacing: 24) {
                 
-                // MARK: - Invoice Details Section
                 VStack(alignment: .leading, spacing: 16) {
                     Text("Invoice Details")
                         .font(Constants.headerFont)
                     
                     HStack(spacing: 12) {
+                        
                         // Date
                         VStack(alignment: .leading) {
                             HStack {
@@ -83,7 +79,6 @@ struct NewInvoiceView: View {
                 .cornerRadius(12)
                 .shadow(color: .black.opacity(0.05), radius: 5)
                 
-                // MARK: - Client Section
                 VStack(alignment: .leading, spacing: 16) {
                     HStack {
                         Text("Client")
@@ -118,7 +113,6 @@ struct NewInvoiceView: View {
                 .cornerRadius(12)
                 .shadow(color: .black.opacity(0.05), radius: 5)
                 
-                // MARK: - Items Section
                 VStack(alignment: .leading, spacing: 16) {
                     HStack {
                         Text("Items & Services")
@@ -155,7 +149,6 @@ struct NewInvoiceView: View {
                 .cornerRadius(12)
                 .shadow(color: .black.opacity(0.05), radius: 5)
                 
-                // MARK: - Total Section
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
                         Text("Total")
@@ -207,8 +200,10 @@ struct NewInvoiceView: View {
             get: { viewModel.showingClientForm },
             set: { viewModel.showingClientForm = $0 }
         )) {
-            Text("Client Form Coming Soon")
-                .font(.title)
+            ClientFormView { newClient in
+                    viewModel.client = newClient
+                    viewModel.showingClientForm = false
+                }
         }
         .sheet(isPresented: Binding(
             get: { viewModel.showingItemForm },
@@ -221,7 +216,6 @@ struct NewInvoiceView: View {
 }
 
 
-// MARK: - Supporting Views
 
 struct ClientInfoCard: View {
     let client: Client

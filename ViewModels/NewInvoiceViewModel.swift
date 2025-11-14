@@ -13,7 +13,6 @@ import SwiftData
 @Observable
 class NewInvoiceViewModel {
     
-    // MARK: - Properties
     
     var invoiceDate = Date()
     var jobNumber = ""
@@ -27,7 +26,6 @@ class NewInvoiceViewModel {
     
     private let modelContext: ModelContext
     
-    // MARK: - Computed Properties
     
     var totalAmount: Double {
         lineItems.reduce(0) { $0 + $1.itemPrice }
@@ -40,46 +38,44 @@ class NewInvoiceViewModel {
         return formatter.string(from: NSNumber(value: totalAmount)) ?? "$0.00"
     }
     
-    // MARK: - Initialization
     
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
     }
     
-    // MARK: - Methods
     
-    /// Adds a client to the invoice
+    // Adds a client to the invoice
     func addClient(_ client: Client) {
         self.client = client
         showingClientForm = false
     }
     
-    /// Removes the client from the invoice
+    // Removes the client from the invoice
     func removeClient() {
         self.client = nil
     }
     
-    /// Adds a line item to the invoice
+    // Adds a line item to the invoice
     func addLineItem(_ item: LineItem) {
         item.sortOrder = lineItems.count
         lineItems.append(item)
         showingItemForm = false
     }
     
-    /// Removes a line item at the specified index
+    // Removes a line item at the specified index
     func removeLineItem(at index: Int) {
         lineItems.remove(at: index)
         updateSortOrder()
     }
     
-    /// Updates the sort order of all line items after removal
+    // Updates the sort order of all line items after removal
     private func updateSortOrder() {
         for (index, _) in lineItems.enumerated() {
             lineItems[index].sortOrder = index
         }
     }
     
-    /// Validates the invoice data
+    // Validates the invoice data
     func validate() -> Bool {
         if client == nil {
             errorMessage = "Please add a client"
@@ -96,7 +92,7 @@ class NewInvoiceViewModel {
         return true
     }
     
-    /// Creates and saves the invoice
+    // Creates and saves the invoice
     func createInvoice() -> Bool {
         // Validate first
         guard validate() else {
@@ -130,7 +126,7 @@ class NewInvoiceViewModel {
         }
     }
     
-    /// Generates the next invoice number
+    // Generates the next invoice number
     private func generateInvoiceNumber() -> String {
         // Query existing invoices to find the highest number
         let descriptor = FetchDescriptor<Invoice>(
