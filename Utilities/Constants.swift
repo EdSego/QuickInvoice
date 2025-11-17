@@ -26,11 +26,11 @@ enum Constants {
     static let backgroundColor = Color(.systemGroupedBackground)
     static let requiredFieldColor = Color.red
     
-    static let titleFont: Font = .largeTitle.bold()
-    static let headerFont: Font = .headline
-    
-    static let bodyFont: Font = .body
-    static let captionFont: Font = .caption
+    static let titleFont: Font = .system(size: 34, weight: .bold, design: .monospaced)
+    static let headerFont: Font = .system(size: 25, weight: .bold, design: .monospaced)
+    static let bodyFont: Font = .system(size: 18, weight: .regular, design: .monospaced)
+    static let captionFont: Font = .system(size: 14, weight: .regular, design: .monospaced)
+       
     
     static let requiredFieldMessage = "Required"
     static let invalidEmailMessage = "Invalid Email"
