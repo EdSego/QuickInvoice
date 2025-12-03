@@ -10,6 +10,7 @@ import Foundation
 final class InvoiceListViewModel: ObservableObject {
     
     
+    
     func addInvoice() {
         print("AddInvoice Button was Pressed")
     }

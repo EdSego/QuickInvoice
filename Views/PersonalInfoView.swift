@@ -7,12 +7,130 @@
 
 import SwiftUI
 
+
+
 struct PersonalInfoView: View {
+    
+    @EnvironmentObject var viewModel: PersonalInfoViewModel
+    @FocusState private var focus: ProfileField?
+  
+    
+    
     var body: some View {
-        Text("Enter Personal Information")
+        
+        NavigationStack {
+            Form {
+                
+                Section{
+                 //   TextField("First Name", text: $viewModel.personalName)
+                    FormTextField(label: "Full Name",required: true, text: $viewModel.personalName, error: (viewModel.touched.contains(.name) || viewModel.submitted) ? viewModel.errors[.name] : nil)
+                        .focused($focus, equals: .name)
+                        .submitLabel(.next)
+                        .onSubmit {
+                            focus = .phone
+                        }
+                        .onChange(of: viewModel.personalName) {
+                            //viewModel.markTouched(.name)
+                            viewModel.validate(.name)
+                        }
+                    
+//                    if viewModel.shouldShow(.name) {
+//                        Text(viewModel.errors[.name] ?? "")
+//                                                       .font(.caption).foregroundColor(.red)
+//                    }
+
+//                    if viewModel.touched.contains(.name), let err = viewModel.errors[.name] {
+//                                                Text(err).font(.caption).foregroundColor(.red)
+//                                            }
+                }
+                Section {
+//                    TextField("Phone Number", text: $viewModel.phone)
+//                        .keyboardType(.numberPad)
+                    FormTextField(label: "Phone Number",required: true, text: $viewModel.phone,keyboard: .numberPad, error: (viewModel.touched.contains(.phone) || viewModel.submitted) ? viewModel.errors[.phone] : nil)
+                        .focused($focus, equals: .phone)
+                        .onChange(of: viewModel.phone) {
+                           // viewModel.markTouched(.phone)
+                            viewModel.validate(.phone)
+                        }
+
+//                    if viewModel.touched.contains(.phone), let err = viewModel.errors[.phone] {
+//                                                Text(err).font(.caption).foregroundColor(.red)
+//                                            }
+                }
+                
+                Section {
+                    FormTextField(label: "Email",required: true, text: $viewModel.email, keyboard: .emailAddress,error: (viewModel.touched.contains(.email) || viewModel.submitted) ? viewModel.errors[.email] : nil)
+                    
+                        .focused($focus, equals: .email)
+                        .submitLabel(.next)
+                        .onSubmit {
+                            focus = nil
+                        }
+                        .onChange(of: viewModel.email) {
+                         //   viewModel.markTouched(.email)
+                            viewModel.validate(.email)
+                        }
+
+//                    if viewModel.touched.contains(.email), let err = viewModel.errors[.email] {
+//                                                Text(err).font(.caption).foregroundColor(.red)
+//                                            }
+                    
+                }
+                
+                
+            }
+            .scrollDismissesKeyboard(.interactively)
+            .onTapGesture {
+                focus = nil
+            }
+            // Reset transient UI when entering/leaving
+            .onAppear {
+                viewModel.resetValidation()
+                focus = .name
+            }
+            .onDisappear {
+                viewModel.resetValidation()
+                focus = nil
+            }
+            
+            .safeAreaInset(edge: .bottom){
+                PrimaryButton(title: "Save", systemImage: "square.and.arrow.down"){
+                    viewModel.save(focus: &focus)
+            }
+                .padding(.horizontal)
+                .padding(.vertical,8)
+                    
+            }
+            // Mark fields as touched when they LOSE focus
+            .onChange(of: focus) { old, new in
+                            if let old, new != old {
+                                viewModel.touched.insert(old)
+                                viewModel.validate(old)
+                            }
+                        }
+            
+               
+            .toolbar {
+    
+                ToolbarItem(placement: .principal){
+                    Text("Personal Info")
+                        .font(.system(size: 25,weight: .bold, design: .monospaced))
+                        .foregroundStyle(.primary)
+                        .padding(.top, 20)
+                }
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") { focus = nil}
+                }
+                
+
+            }
+        }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
-
 #Preview {
     PersonalInfoView()
+        .environmentObject(PersonalInfoViewModel())
+       
 }

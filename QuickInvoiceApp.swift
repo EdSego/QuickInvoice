@@ -12,6 +12,8 @@ import SwiftData
 struct QuickInvoiceApp: App {
     let modelContainer: ModelContainer
     @StateObject private var invoiceListVM = InvoiceListViewModel()
+    @StateObject private var personalInfoVM = PersonalInfoViewModel()
+    @StateObject private var businessInfoVM = BusinessInfoViewModel()
 
     
     init() {
@@ -35,6 +37,9 @@ struct QuickInvoiceApp: App {
             ContentView()
         }
         .modelContainer(modelContainer)
+       
         .environmentObject(invoiceListVM)
+        .environmentObject(personalInfoVM)
+        .environmentObject(businessInfoVM)
     }
 }
