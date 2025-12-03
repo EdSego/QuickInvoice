@@ -23,6 +23,7 @@
 		140D034B2EB819D0004F66E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 140D032C2EB819D0004F66E1 /* Assets.xcassets */; };
 		14FA10052EB878B400A462A6 /* PersonalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10042EB878B400A462A6 /* PersonalInfoView.swift */; };
 		14FA10072EB878DB00A462A6 /* BusinessInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10062EB878DB00A462A6 /* BusinessInfoView.swift */; };
+		BE12D5F72EDFCCFA00547EEB /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12D5F62EDFCCEE00547EEB /* ItemViewModel.swift */; };
 		BE513EA82EB9550600A7E216 /* NewInvoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE513EA72EB9550600A7E216 /* NewInvoiceView.swift */; };
 		BE513EAB2EB9AB0E00A7E216 /* NewInvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE513EAA2EB9AAFE00A7E216 /* NewInvoiceViewModel.swift */; };
 		BE7F9EF42EBD9CD800510B85 /* ClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7F9EF32EBD9CD400510B85 /* ClientView.swift */; };
@@ -64,6 +65,7 @@
 		140D033C2EB819D0004F66E1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		14FA10042EB878B400A462A6 /* PersonalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoView.swift; sourceTree = "<group>"; };
 		14FA10062EB878DB00A462A6 /* BusinessInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInfoView.swift; sourceTree = "<group>"; };
+		BE12D5F62EDFCCEE00547EEB /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		BE513E922EB8731400A7E216 /* placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeholder.swift; sourceTree = "<group>"; };
 		BE513EA72EB9550600A7E216 /* NewInvoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInvoiceView.swift; sourceTree = "<group>"; };
 		BE513EA92EB99B7500A7E216 /* QuickInvoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickInvoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +172,7 @@
 		BE513E912EB8723600A7E216 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				BE12D5F62EDFCCEE00547EEB /* ItemViewModel.swift */,
 				BE9418772EC6CB1900255F8C /* ClientViewModel.swift */,
 				BE513EAA2EB9AAFE00A7E216 /* NewInvoiceViewModel.swift */,
 				140D03312EB819D0004F66E1 /* InvoiceListViewModel.swift */,
@@ -340,6 +343,7 @@
 				14FA10052EB878B400A462A6 /* PersonalInfoView.swift in Sources */,
 				140D03482EB819D0004F66E1 /* InvoiceListViewModel.swift in Sources */,
 				140D03492EB819D0004F66E1 /* Constants.swift in Sources */,
+				BE12D5F72EDFCCFA00547EEB /* ItemViewModel.swift in Sources */,
 				14FA10072EB878DB00A462A6 /* BusinessInfoView.swift in Sources */,
 				140D034A2EB819D0004F66E1 /* ContentView.swift in Sources */,
 				BE7F9EF42EBD9CD800510B85 /* ClientView.swift in Sources */,

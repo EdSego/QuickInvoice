@@ -1,5 +1,3 @@
-//
-//  NewInvoiceView.swift
 //  QuickInvoice
 //
 //  Created by Bryan Alarcon on 11/3/25.
@@ -13,7 +11,6 @@ struct NewInvoiceView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var viewModel: NewInvoiceViewModel?
-        
     var body: some View {
         NavigationStack {
             if let viewModel = viewModel {
@@ -27,7 +24,6 @@ struct NewInvoiceView: View {
             }
         }
     }
-        
     @ViewBuilder
     private func invoiceFormContent(viewModel: NewInvoiceViewModel) -> some View {
         ScrollView {
@@ -38,7 +34,6 @@ struct NewInvoiceView: View {
                         .font(Constants.headerFont)
                     
                     HStack(spacing: 12) {
-                        
                         // Date
                         VStack(alignment: .leading) {
                             HStack {
@@ -200,10 +195,8 @@ struct NewInvoiceView: View {
             get: { viewModel.showingClientForm },
             set: { viewModel.showingClientForm = $0 }
         )) {
-            ClientFormView { newClient in
-                    viewModel.client = newClient
-                    viewModel.showingClientForm = false
-                }
+            Text("Client Form Coming Soon")
+                .font(.title)
         }
         .sheet(isPresented: Binding(
             get: { viewModel.showingItemForm },
