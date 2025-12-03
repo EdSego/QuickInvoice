@@ -13,6 +13,7 @@ struct QuickInvoiceApp: App {
     let modelContainer: ModelContainer
     @StateObject private var invoiceListVM = InvoiceListViewModel()
     @StateObject private var personalInfoVM = PersonalInfoViewModel()
+    @StateObject private var businessInfoVM = BusinessInfoViewModel()
 
     
     init() {
@@ -39,5 +40,6 @@ struct QuickInvoiceApp: App {
        
         .environmentObject(invoiceListVM)
         .environmentObject(personalInfoVM)
+        .environmentObject(businessInfoVM)
     }
 }

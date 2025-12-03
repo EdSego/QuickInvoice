@@ -13,6 +13,7 @@ struct FormTextField: View {
     @Binding var text: String
     var keyboard: UIKeyboardType = .default
     var error: String? = nil
+    var widthFactor: CGFloat = 1.0 
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -32,5 +33,6 @@ struct FormTextField: View {
                 Text(error).font(.caption).foregroundColor(.red)
             }
         }
+        .frame(maxWidth: .infinity * widthFactor, alignment: .leading)
     }
 }
