@@ -28,9 +28,6 @@ struct ItemFormView: View {
                         Text("Add Items & Services")
                             .font(.title2)
                             .fontWeight(.bold)
-                        Text("Add all items for this invoice")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)

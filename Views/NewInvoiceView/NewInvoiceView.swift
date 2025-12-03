@@ -195,15 +195,19 @@ struct NewInvoiceView: View {
             get: { viewModel.showingClientForm },
             set: { viewModel.showingClientForm = $0 }
         )) {
-            Text("Client Form Coming Soon")
-                .font(.title)
+            ClientFormView { newClient in
+                viewModel.client = newClient
+                viewModel.showingClientForm = false
+            }
         }
         .sheet(isPresented: Binding(
             get: { viewModel.showingItemForm },
             set: { viewModel.showingItemForm = $0 }
         )) {
-            Text("Item Form Coming Soon")
-                .font(.title)
+            ItemFormView { newItems in
+                viewModel.lineItems.append(contentsOf: newItems)
+                viewModel.showingItemForm = false
+            }
         }
     }
 }
