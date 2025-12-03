@@ -21,7 +21,13 @@
 		140D03492EB819D0004F66E1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D033B2EB819D0004F66E1 /* Constants.swift */; };
 		140D034A2EB819D0004F66E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D032D2EB819D0004F66E1 /* ContentView.swift */; };
 		140D034B2EB819D0004F66E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 140D032C2EB819D0004F66E1 /* Assets.xcassets */; };
+		14106B232ECAFE52000ABDF5 /* ClientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14106B212ECAFE52000ABDF5 /* ClientViewModel.swift */; };
+		14106B242ECAFE52000ABDF5 /* NewInvoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14106B222ECAFE52000ABDF5 /* NewInvoiceViewModel.swift */; };
+		14106B282ECAFED2000ABDF5 /* ClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14106B252ECAFED2000ABDF5 /* ClientView.swift */; };
+		14106B292ECAFED2000ABDF5 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14106B262ECAFED2000ABDF5 /* ItemView.swift */; };
+		14106B2A2ECAFED2000ABDF5 /* NewInvoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14106B272ECAFED2000ABDF5 /* NewInvoiceView.swift */; };
 		141CE5312EC43B2A0058B6EA /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CE5302EC43B120058B6EA /* FormTextField.swift */; };
+		1487457E2ECC2D7D00F4ADC9 /* BusinessInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1487457D2ECC2D7D00F4ADC9 /* BusinessInfoViewModel.swift */; };
 		14FA10052EB878B400A462A6 /* PersonalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10042EB878B400A462A6 /* PersonalInfoView.swift */; };
 		14FA10072EB878DB00A462A6 /* BusinessInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10062EB878DB00A462A6 /* BusinessInfoView.swift */; };
 		14FA10152EB9BAF100A462A6 /* PersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10142EB9BAF100A462A6 /* PersonalInfoViewModel.swift */; };
@@ -59,7 +65,13 @@
 		140D033A2EB819D0004F66E1 /* QuickInvoiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickInvoiceApp.swift; sourceTree = "<group>"; };
 		140D033B2EB819D0004F66E1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		140D033C2EB819D0004F66E1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		14106B212ECAFE52000ABDF5 /* ClientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientViewModel.swift; sourceTree = "<group>"; };
+		14106B222ECAFE52000ABDF5 /* NewInvoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInvoiceViewModel.swift; sourceTree = "<group>"; };
+		14106B252ECAFED2000ABDF5 /* ClientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientView.swift; sourceTree = "<group>"; };
+		14106B262ECAFED2000ABDF5 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		14106B272ECAFED2000ABDF5 /* NewInvoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInvoiceView.swift; sourceTree = "<group>"; };
 		141CE5302EC43B120058B6EA /* FormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
+		1487457D2ECC2D7D00F4ADC9 /* BusinessInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInfoViewModel.swift; sourceTree = "<group>"; };
 		14FA10042EB878B400A462A6 /* PersonalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoView.swift; sourceTree = "<group>"; };
 		14FA10062EB878DB00A462A6 /* BusinessInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInfoView.swift; sourceTree = "<group>"; };
 		14FA10112EB9B75B00A462A6 /* QuickInvoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickInvoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,10 +177,11 @@
 		BE513E912EB8723600A7E216 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				BE9418772EC6CB1900255F8C /* ClientViewModel.swift */,
-				BE513EAA2EB9AAFE00A7E216 /* NewInvoiceViewModel.swift */,
+				14106B212ECAFE52000ABDF5 /* ClientViewModel.swift */,
+				14106B222ECAFE52000ABDF5 /* NewInvoiceViewModel.swift */,
 				140D03312EB819D0004F66E1 /* InvoiceListViewModel.swift */,
 				14FA10142EB9BAF100A462A6 /* PersonalInfoViewModel.swift */,
+				1487457D2ECC2D7D00F4ADC9 /* BusinessInfoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -176,9 +189,9 @@
 		BE9418792EC6CC2A00255F8C /* NewInvoiceView */ = {
 			isa = PBXGroup;
 			children = (
-				BE7F9EF52EBD9DAD00510B85 /* ItemView.swift */,
-				BE7F9EF32EBD9CD400510B85 /* ClientView.swift */,
-				BE513EA72EB9550600A7E216 /* NewInvoiceView.swift */,
+				14106B252ECAFED2000ABDF5 /* ClientView.swift */,
+				14106B262ECAFED2000ABDF5 /* ItemView.swift */,
+				14106B272ECAFED2000ABDF5 /* NewInvoiceView.swift */,
 			);
 			path = NewInvoiceView;
 			sourceTree = "<group>";
@@ -319,26 +332,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14106B232ECAFE52000ABDF5 /* ClientViewModel.swift in Sources */,
+				1487457E2ECC2D7D00F4ADC9 /* BusinessInfoViewModel.swift in Sources */,
+				14106B242ECAFE52000ABDF5 /* NewInvoiceViewModel.swift in Sources */,
 				140D033E2EB819D0004F66E1 /* PrimaryButton.swift in Sources */,
 				140D033F2EB819D0004F66E1 /* BusinessInfo.swift in Sources */,
 				14FA10152EB9BAF100A462A6 /* PersonalInfoViewModel.swift in Sources */,
 				140D03402EB819D0004F66E1 /* Extensions.swift in Sources */,
 				140D03412EB819D0004F66E1 /* InvoiceListView.swift in Sources */,
 				140D03422EB819D0004F66E1 /* Invoice.swift in Sources */,
-				BE9418782EC6CB2000255F8C /* ClientViewModel.swift in Sources */,
 				140D03432EB819D0004F66E1 /* PersonInfo.swift in Sources */,
 				140D03442EB819D0004F66E1 /* Client.swift in Sources */,
 				141CE5312EC43B2A0058B6EA /* FormTextField.swift in Sources */,
 				140D03452EB819D0004F66E1 /* QuickInvoiceApp.swift in Sources */,
-				BE513EAB2EB9AB0E00A7E216 /* NewInvoiceViewModel.swift in Sources */,
 				140D03462EB819D0004F66E1 /* LineItem.swift in Sources */,
+				14106B282ECAFED2000ABDF5 /* ClientView.swift in Sources */,
+				14106B292ECAFED2000ABDF5 /* ItemView.swift in Sources */,
+				14106B2A2ECAFED2000ABDF5 /* NewInvoiceView.swift in Sources */,
 				140D03472EB819D0004F66E1 /* ProfileView.swift in Sources */,
 				14FA10052EB878B400A462A6 /* PersonalInfoView.swift in Sources */,
 				140D03482EB819D0004F66E1 /* InvoiceListViewModel.swift in Sources */,
 				140D03492EB819D0004F66E1 /* Constants.swift in Sources */,
 				14FA10072EB878DB00A462A6 /* BusinessInfoView.swift in Sources */,
 				140D034A2EB819D0004F66E1 /* ContentView.swift in Sources */,
-				BE7F9EF42EBD9CD800510B85 /* ClientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,7 +516,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DR9NKDC2HL;
+				DEVELOPMENT_TEAM = YD85Q2SAT2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -529,7 +545,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DR9NKDC2HL;
+				DEVELOPMENT_TEAM = YD85Q2SAT2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -23,7 +23,7 @@ struct PersonalInfoView: View {
                 
                 Section{
                  //   TextField("First Name", text: $viewModel.personalName)
-                    FormTextField(label: "First Name",required: true, text: $viewModel.personalName, error: (viewModel.touched.contains(.name) || viewModel.submitted) ? viewModel.errors[.name] : nil)
+                    FormTextField(label: "Full Name",required: true, text: $viewModel.personalName, error: (viewModel.touched.contains(.name) || viewModel.submitted) ? viewModel.errors[.name] : nil)
                         .focused($focus, equals: .name)
                         .submitLabel(.next)
                         .onSubmit {
@@ -93,8 +93,12 @@ struct PersonalInfoView: View {
                 focus = nil
             }
             
-            PrimaryButton(title: "Save", systemImage: "square.and.arrow.down"){
-                viewModel.save(focus: &focus)
+            .safeAreaInset(edge: .bottom){
+                PrimaryButton(title: "Save", systemImage: "square.and.arrow.down"){
+                    viewModel.save(focus: &focus)
+            }
+                .padding(.horizontal)
+                .padding(.vertical,8)
                     
             }
             // Mark fields as touched when they LOSE focus
@@ -122,6 +126,7 @@ struct PersonalInfoView: View {
 
             }
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 #Preview {
