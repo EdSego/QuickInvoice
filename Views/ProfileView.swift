@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
+
 
 struct ProfileView: View {
-    @StateObject private var viewModel: InvoiceListViewModel
-    init() {
-        _viewModel = StateObject(wrappedValue: InvoiceListViewModel())
-    }
+    @StateObject private var viewModel = InvoiceListViewModel()
+    @Query private var people: [PersonInfo]
     
     var body: some View {
+        
+        let name = people.first?.personName ?? "client name"
+        
         NavigationStack {
-            Text("Hello!.. client name!")
+            Text("Hello, \(name)!")
                 .padding(.bottom, 60)
 
             

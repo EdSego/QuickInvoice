@@ -20,6 +20,10 @@ final class BusinessInfo{
     var businessAddress: String?
     
     var businessLicNum: String?
+    
+    var businessState: String?
+    
+    var businessZipCode: String?
 
     
     var createdAt: Date
