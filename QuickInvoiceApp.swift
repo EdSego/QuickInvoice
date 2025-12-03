@@ -35,11 +35,13 @@ struct QuickInvoiceApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(invoiceListVM)
+                .environmentObject(personalInfoVM)
+                .environmentObject(businessInfoVM)
+            
         }
         .modelContainer(modelContainer)
        
-        .environmentObject(invoiceListVM)
-        .environmentObject(personalInfoVM)
-        .environmentObject(businessInfoVM)
+        
     }
 }

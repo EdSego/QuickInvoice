@@ -6,10 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct BusinessInfoView: View {
     @EnvironmentObject var viewModel: BusinessInfoViewModel
+    @Environment(\.modelContext) private var modelContext
     @FocusState private var focusedField: Field?
+    // fetch all businessInfo rows
+    @Query private var businesses: [BusinessInfo]
+    
+    
+    @State private var didLoadFromStore = false
+    @State private var showToast = false
     
     enum Field: Hashable {
         case businessName
@@ -91,7 +99,7 @@ struct BusinessInfoView: View {
                                     focusedField = .license
                                 }
                         } else {
-                        
+                            
                         }
                         
                     }
@@ -113,40 +121,73 @@ struct BusinessInfoView: View {
                 focusedField = nil //dismisses keyboard when tapping outside
             }
             
+            .onAppear {
+                focusedField = .businessName
+                
+                if !didLoadFromStore, let info = businesses.first {
+                    viewModel.load(from: info)
+                    didLoadFromStore = true
+                }
+            }
+            .onDisappear{
+                focusedField = nil
+            }
             
             .safeAreaInset(edge: .bottom) {
                 PrimaryButton(title: "Save",systemImage: "square.and.arrow.down"){
+                    viewModel.save(context: modelContext)
+                    
+                    withAnimation(.spring()){
+                        showToast = true
+                    }
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.8){
+                        withAnimation(.spring()) {
+                            showToast = false
+                        }
+                    }
                     
                 }
                 .padding(.horizontal)
                 .padding(.vertical,4)
             }
             
-            .toolbar {
-                
-                ToolbarItem(placement: .principal) {
-                    Text("Business Info")
-                        .font(.system(size: 25,weight: .bold, design: .monospaced))
-                        .foregroundStyle(.primary)
-                        .padding(.top, 20)
-                }
-                ToolbarItemGroup(placement: .keyboard) {
+            
+            if showToast{
+                VStack {
                     Spacer()
-                    Button("Done") { focusedField = nil}
+                    
+                    Text("Saved ✓")
+                        .font(.subheadline.weight(.semibold))
+                        .padding(.horizontal, 18)
+                        .padding(.vertical, 10)
+                        .background(.thinMaterial)
+                        .cornerRadius(14)
+                        .shadow(radius: 4)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .padding(.bottom, 110) // above Save button
                 }
-                
             }
-           
-            .onAppear {
-                focusedField = .businessName
-            }
-            .onDisappear{
-                focusedField = nil
-            }
-    
         }
+        
+        .toolbar {
+            
+            ToolbarItem(placement: .principal) {
+                Text("Business Info")
+                    .font(.system(size: 25,weight: .bold, design: .monospaced))
+                    .foregroundStyle(.primary)
+                    .padding(.top, 20)
+            }
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") { focusedField = nil}
+            }
+            
+        }
+        
+        
     }
-    
+
 }
 
 #Preview {

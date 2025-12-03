@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 enum ProfileField: CaseIterable, Hashable {
     case name, phone, email
@@ -25,11 +26,37 @@ final class PersonalInfoViewModel: ObservableObject {
        @Published var errors: [ProfileField: String] = [:]
        @Published var touched: Set<ProfileField> = []
     
+    //Creating a person object
+    private var personInfo: PersonInfo?
+   
+    //initializing - let the create object = personInfo
+    init(personInfo: PersonInfo? = nil){
+        self.personInfo = personInfo
+        
+        if let personInfo {
+            personalName = personInfo.personName
+            phone = personInfo.personPhoneNum
+            email = personInfo.personEmail ?? ""
+        }
+    }
+    
+    
     var isValid: Bool {
         !personalName.isBlank &&
         !phone.isBlank &&
         email.isValidEmail
     }
+    
+    /// Called from the view when we find an existing PersonInfo in SwiftData
+        func load(from entity: PersonInfo) {
+            // Avoid reloading if we already attached this one
+            guard personInfo == nil else { return }
+            
+            personInfo   = entity
+            personalName = entity.personName
+            phone        = entity.personPhoneNum
+            email        = entity.personEmail ?? ""
+        }
     
     func validate(_ field: ProfileField) {
         switch field {
@@ -68,7 +95,7 @@ final class PersonalInfoViewModel: ObservableObject {
         touched.insert(field)
     }
     
-    func save(focus: inout ProfileField?) {
+    func save(focus: inout ProfileField?, context: ModelContext) {
         //        guard validateAll() else {
         //            print("Invalid input - not saved.")
         //            touched = Set(ProfileField.allCases)
@@ -82,7 +109,26 @@ final class PersonalInfoViewModel: ObservableObject {
             return
         }
         
+        let entity: PersonInfo
         
+        if let existing = personInfo {
+            entity = existing //editing
+        } else {
+            entity = PersonInfo() //Create a new instance
+            context.insert(entity)
+            personInfo = entity
+        }
+        
+        entity.personName = personalName
+        entity.personPhoneNum = phone
+        entity.personEmail = email
+        entity.updateAt = Date()
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed to save PersonInfo: \(error)")
+        }
     }
     
 }
