@@ -19,7 +19,7 @@ struct InvoiceListView: View {
             VStack {
                 Spacer()
                 
-                Text("Invoices will appear here")
+                Text("Welcome to Quick Invoice!")
                     .foregroundColor(.secondary)
                 
                 Spacer()

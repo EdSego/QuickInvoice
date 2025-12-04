@@ -1,3 +1,5 @@
+//
+//  NewInvoiceView.swift
 //  QuickInvoice
 //
 //  Created by Bryan Alarcon on 11/3/25.
@@ -11,6 +13,15 @@ struct NewInvoiceView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var viewModel: NewInvoiceViewModel?
+    
+    // PDF Preview State
+    @State private var showingPDFPreview = false
+    @State private var generatedPDFData: Data?
+    @State private var createdInvoice: Invoice?
+    
+    // Query for business info (for PDF generation)
+    @Query private var businessInfos: [BusinessInfo]
+    
     var body: some View {
         NavigationStack {
             if let viewModel = viewModel {
@@ -24,12 +35,14 @@ struct NewInvoiceView: View {
             }
         }
     }
+    
     @ViewBuilder
     private func invoiceFormContent(viewModel: NewInvoiceViewModel) -> some View {
         ScrollView {
-            VStack(spacing: 24) {
+            VStack(spacing: Constants.sectionSpacing) {
                 
-                VStack(alignment: .leading, spacing: 16) {
+                // INVOICE DETAILS SECTION
+                VStack(alignment: .leading, spacing: Constants.formSpacing) {
                     Text("Invoice Details")
                         .font(Constants.headerFont)
                     
@@ -40,7 +53,7 @@ struct NewInvoiceView: View {
                                 Text("Date")
                                     .font(Constants.bodyFont)
                                 Text("*")
-                                    .foregroundColor(.red)
+                                    .foregroundColor(Constants.requiredFieldColor)
                             }
                             DatePicker(
                                 "Invoice Date",
@@ -71,15 +84,16 @@ struct NewInvoiceView: View {
                 }
                 .padding()
                 .background(Color(.systemBackground))
-                .cornerRadius(12)
+                .cornerRadius(Constants.cornerRadius)
                 .shadow(color: .black.opacity(0.05), radius: 5)
                 
-                VStack(alignment: .leading, spacing: 16) {
+                // CLIENT SECTION
+                VStack(alignment: .leading, spacing: Constants.formSpacing) {
                     HStack {
                         Text("Client")
                             .font(Constants.headerFont)
                         Text("*")
-                            .foregroundColor(.red)
+                            .foregroundColor(Constants.requiredFieldColor)
                     }
                     
                     if let client = viewModel.client {
@@ -97,23 +111,24 @@ struct NewInvoiceView: View {
                             }
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.blue.opacity(0.1))
-                            .foregroundColor(.blue)
-                            .cornerRadius(10)
+                            .background(Constants.primaryColor.opacity(0.1))
+                            .foregroundColor(Constants.primaryColor)
+                            .cornerRadius(Constants.cornerRadius)
                         }
                     }
                 }
                 .padding()
                 .background(Color(.systemBackground))
-                .cornerRadius(12)
+                .cornerRadius(Constants.cornerRadius)
                 .shadow(color: .black.opacity(0.05), radius: 5)
                 
-                VStack(alignment: .leading, spacing: 16) {
+                // ITEMS & SERVICES SECTION
+                VStack(alignment: .leading, spacing: Constants.formSpacing) {
                     HStack {
                         Text("Items & Services")
                             .font(Constants.headerFont)
                         Text("*")
-                            .foregroundColor(.red)
+                            .foregroundColor(Constants.requiredFieldColor)
                     }
                     
                     if !viewModel.lineItems.isEmpty {
@@ -134,16 +149,17 @@ struct NewInvoiceView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.blue.opacity(0.1))
-                        .foregroundColor(.blue)
-                        .cornerRadius(10)
+                        .background(Constants.primaryColor.opacity(0.1))
+                        .foregroundColor(Constants.primaryColor)
+                        .cornerRadius(Constants.cornerRadius)
                     }
                 }
                 .padding()
                 .background(Color(.systemBackground))
-                .cornerRadius(12)
+                .cornerRadius(Constants.cornerRadius)
                 .shadow(color: .black.opacity(0.05), radius: 5)
                 
+                // TOTAL SECTION
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
                         Text("Total")
@@ -152,19 +168,19 @@ struct NewInvoiceView: View {
                         Text(viewModel.formattedTotal)
                             .font(.title2)
                             .fontWeight(.bold)
-                            .foregroundColor(.blue)
+                            .foregroundColor(Constants.primaryColor)
                     }
                 }
                 .padding()
                 .background(Color(.systemBackground))
-                .cornerRadius(12)
+                .cornerRadius(Constants.cornerRadius)
                 .shadow(color: .black.opacity(0.05), radius: 5)
                 
                 Color.clear.frame(height: 20)
             }
-            .padding()
+            .padding(Constants.screenPadding)
         }
-        .background(Color(.systemGroupedBackground))
+        .background(Constants.backgroundColor)
         .navigationTitle("New Invoice")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -176,9 +192,7 @@ struct NewInvoiceView: View {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Create") {
-                    if viewModel.createInvoice() {
-                        dismiss()
-                    }
+                    handleCreateInvoice(viewModel: viewModel)
                 }
                 .fontWeight(.semibold)
             }
@@ -195,7 +209,7 @@ struct NewInvoiceView: View {
             get: { viewModel.showingClientForm },
             set: { viewModel.showingClientForm = $0 }
         )) {
-            ClientFormView { newClient in
+            ClientFormView(modelContext: modelContext) { newClient in
                 viewModel.client = newClient
                 viewModel.showingClientForm = false
             }
@@ -204,15 +218,58 @@ struct NewInvoiceView: View {
             get: { viewModel.showingItemForm },
             set: { viewModel.showingItemForm = $0 }
         )) {
-            ItemFormView { newItems in
+            ItemFormView(modelContext: modelContext) { newItems in
                 viewModel.lineItems.append(contentsOf: newItems)
                 viewModel.showingItemForm = false
             }
         }
+        .sheet(isPresented: $showingPDFPreview) {
+            if let data = generatedPDFData,
+               let invoice = createdInvoice {
+                PDFPreviewView(
+                    pdfData: data,
+                    invoice: invoice
+                ) {
+                    // When done with preview, dismiss everything
+                    dismiss()
+                }
+            } else {
+                Text("Failed to load PDF preview.")
+                    .font(.headline)
+            }
+        }
+    }
+    
+    // MARK: - Create Invoice Handler
+    
+    private func handleCreateInvoice(viewModel: NewInvoiceViewModel) {
+        // Create and save the invoice
+        guard let invoice = viewModel.createInvoice() else {
+            // Error already shown by viewModel
+            return
+        }
+        
+        // Get business info (if available)
+        let businessInfo = businessInfos.first
+        
+        // Generate PDF
+        guard let pdfData = PDFGenerator.generateInvoicePDF(
+            invoice: invoice,
+            businessInfo: businessInfo
+        ) else {
+            // Show error if PDF generation fails
+            print("Failed to generate PDF")
+            return
+        }
+        
+        // Store the data and show preview
+        self.createdInvoice = invoice
+        self.generatedPDFData = pdfData
+        self.showingPDFPreview = true
     }
 }
 
-
+// MARK: - Support Views
 
 struct ClientInfoCard: View {
     let client: Client
@@ -243,14 +300,14 @@ struct ClientInfoCard: View {
                 
                 Button(action: onRemove) {
                     Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.red)
+                        .foregroundColor(Constants.accentColor)
                         .font(.title3)
                 }
             }
         }
         .padding()
-        .background(Color.blue.opacity(0.1))
-        .cornerRadius(10)
+        .background(Constants.primaryColor.opacity(0.1))
+        .cornerRadius(Constants.cornerRadius)
     }
 }
 
@@ -279,15 +336,17 @@ struct LineItemCard: View {
             
             Button(action: onRemove) {
                 Image(systemName: "xmark.circle.fill")
-                    .foregroundColor(.red)
+                    .foregroundColor(Constants.accentColor)
                     .font(.title3)
             }
         }
         .padding()
         .background(Color(.systemGray6))
-        .cornerRadius(10)
+        .cornerRadius(Constants.cornerRadius)
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     NewInvoiceView()

@@ -5,14 +5,12 @@
 //  Created by Bryan Alarcon on 11/3/25.
 //
 
-
 import Foundation
 import SwiftUI
 import SwiftData
 
 @Observable
 class NewInvoiceViewModel {
-    
     
     var invoiceDate = Date()
     var jobNumber = ""
@@ -26,7 +24,6 @@ class NewInvoiceViewModel {
     
     private let modelContext: ModelContext
     
-    
     var totalAmount: Double {
         lineItems.reduce(0) { $0 + $1.itemPrice }
     }
@@ -38,44 +35,37 @@ class NewInvoiceViewModel {
         return formatter.string(from: NSNumber(value: totalAmount)) ?? "$0.00"
     }
     
-    
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
     }
     
     
-    // Adds a client to the invoice
     func addClient(_ client: Client) {
         self.client = client
         showingClientForm = false
     }
     
-    // Removes the client from the invoice
     func removeClient() {
         self.client = nil
     }
     
-    // Adds a line item to the invoice
     func addLineItem(_ item: LineItem) {
         item.sortOrder = lineItems.count
         lineItems.append(item)
         showingItemForm = false
     }
     
-    // Removes a line item at the specified index
     func removeLineItem(at index: Int) {
         lineItems.remove(at: index)
         updateSortOrder()
     }
     
-    // Updates the sort order of all line items after removal
     private func updateSortOrder() {
         for (index, _) in lineItems.enumerated() {
             lineItems[index].sortOrder = index
         }
     }
-    
-    // Validates the invoice data
+        
     func validate() -> Bool {
         if client == nil {
             errorMessage = "Please add a client"
@@ -91,12 +81,11 @@ class NewInvoiceViewModel {
         
         return true
     }
-    
-    // Creates and saves the invoice
-    func createInvoice() -> Bool {
+
+    func createInvoice() -> Invoice? {
         // Validate first
         guard validate() else {
-            return false
+            return nil
         }
         
         // Generate invoice number
@@ -118,15 +107,16 @@ class NewInvoiceViewModel {
         // Try to save
         do {
             try modelContext.save()
-            return true
+            return invoice  // Return the created invoice
         } catch {
             errorMessage = "Failed to save invoice: \(error.localizedDescription)"
             showingError = true
-            return false
+            return nil
         }
     }
     
-    // Generates the next invoice number
+    // MARK: - Invoice Number Generation
+    
     private func generateInvoiceNumber() -> String {
         // Query existing invoices to find the highest number
         let descriptor = FetchDescriptor<Invoice>(
