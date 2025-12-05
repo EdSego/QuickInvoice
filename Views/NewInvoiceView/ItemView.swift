@@ -101,7 +101,6 @@ struct ItemFormView: View {
     }
 }
 
-// MARK: - Item Card Component
 
 struct ItemCard: View {
     @Binding var item: ItemFormData

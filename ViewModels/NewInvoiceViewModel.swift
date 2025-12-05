@@ -115,10 +115,8 @@ class NewInvoiceViewModel {
         }
     }
     
-    // MARK: - Invoice Number Generation
     
     private func generateInvoiceNumber() -> String {
-        // Query existing invoices to find the highest number
         let descriptor = FetchDescriptor<Invoice>(
             sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
         )

@@ -32,7 +32,6 @@ class ItemViewModel {
         items.remove(at: index)
     }
     
-    // MARK: - Validation & Creation
     
     func createLineItems() -> [LineItem]? {
         // Validate all items

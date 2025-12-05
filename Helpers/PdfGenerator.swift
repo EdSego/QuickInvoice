@@ -10,7 +10,7 @@ import PDFKit
 
 class PDFGenerator {
     
-    /// Generates a professional invoice PDF
+    // Generates a professional invoice PDF
     static func generateInvoicePDF(
         invoice: Invoice,
         businessInfo: BusinessInfo? = nil
@@ -130,7 +130,6 @@ class PDFGenerator {
         )
     }
     
-    // MARK: - Header Section
     
     private static func drawHeader(
         businessInfo: BusinessInfo?,
@@ -253,7 +252,6 @@ class PDFGenerator {
         return y
     }
     
-    // MARK: - Invoice Title
     
     private static func drawInvoiceTitle(
         invoice: Invoice,
@@ -295,8 +293,7 @@ class PDFGenerator {
         return y
     }
     
-    // MARK: - Invoice Info (Date, Job #)
-    
+
     private static func drawInvoiceInfo(
         invoice: Invoice,
         yPosition: CGFloat,
@@ -336,7 +333,6 @@ class PDFGenerator {
         return y
     }
     
-    // MARK: - Client Info
     
     private static func drawClientInfo(
         client: Client?,
@@ -395,7 +391,6 @@ class PDFGenerator {
         return y
     }
     
-    // MARK: - Line Items Table
     
     private static func drawLineItemsTable(
         lineItems: [LineItem],
@@ -511,7 +506,6 @@ class PDFGenerator {
         return y
     }
     
-    // MARK: - Total Box
     
     private static func drawTotal(
         total: Double,
@@ -551,7 +545,6 @@ class PDFGenerator {
         return y
     }
     
-    // MARK: - Footer
     
     private static func drawFooter(
         pageRect: CGRect,
@@ -570,7 +563,6 @@ class PDFGenerator {
         drawText(footerText, in: footerRect, font: footerFont, alignment: .center, context: context)
     }
     
-    // MARK: - Text Drawing Helper
     
     private static func drawText(
         _ text: String,
@@ -590,10 +582,4 @@ class PDFGenerator {
         
         (text as NSString).draw(in: rect, withAttributes: attributes)
     }
-}//
-//  PdvGenerator.swift
-//  QuickInvoice
-//
-//  Created by Bryan Alarcon on 12/3/25.
-//
-
+}

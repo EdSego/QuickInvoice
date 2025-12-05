@@ -32,6 +32,8 @@
 		14FA10072EB878DB00A462A6 /* BusinessInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10062EB878DB00A462A6 /* BusinessInfoView.swift */; };
 		14FA10152EB9BAF100A462A6 /* PersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FA10142EB9BAF100A462A6 /* PersonalInfoViewModel.swift */; };
 		BE8F75492EDFFB19005B13EA /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F75482EDFFB19005B13EA /* ItemViewModel.swift */; };
+		BE8F754B2EE11E32005B13EA /* PdfGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F754A2EE11E2D005B13EA /* PdfGenerator.swift */; };
+		BE8F754D2EE11E57005B13EA /* PdfPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F754C2EE11E52005B13EA /* PdfPreviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		14FA10142EB9BAF100A462A6 /* PersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewModel.swift; sourceTree = "<group>"; };
 		BE513E922EB8731400A7E216 /* placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeholder.swift; sourceTree = "<group>"; };
 		BE8F75482EDFFB19005B13EA /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
+		BE8F754A2EE11E2D005B13EA /* PdfGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfGenerator.swift; sourceTree = "<group>"; };
+		BE8F754C2EE11E52005B13EA /* PdfPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfPreviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 		140D032F2EB819D0004F66E1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				BE8F754A2EE11E2D005B13EA /* PdfGenerator.swift */,
 				141CE5302EC43B120058B6EA /* FormTextField.swift */,
 				140D032E2EB819D0004F66E1 /* PrimaryButton.swift */,
 			);
@@ -166,6 +171,7 @@
 		BE513E8E2EB86E8700A7E216 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BE8F754C2EE11E52005B13EA /* PdfPreviewView.swift */,
 				BE9418792EC6CC2A00255F8C /* NewInvoiceView */,
 				140D03302EB819D0004F66E1 /* InvoiceListView.swift */,
 				140D03392EB819D0004F66E1 /* ProfileView.swift */,
@@ -341,11 +347,13 @@
 				140D033E2EB819D0004F66E1 /* PrimaryButton.swift in Sources */,
 				140D033F2EB819D0004F66E1 /* BusinessInfo.swift in Sources */,
 				14FA10152EB9BAF100A462A6 /* PersonalInfoViewModel.swift in Sources */,
+				BE8F754D2EE11E57005B13EA /* PdfPreviewView.swift in Sources */,
 				140D03402EB819D0004F66E1 /* Extensions.swift in Sources */,
 				140D03412EB819D0004F66E1 /* InvoiceListView.swift in Sources */,
 				140D03422EB819D0004F66E1 /* Invoice.swift in Sources */,
 				140D03432EB819D0004F66E1 /* PersonInfo.swift in Sources */,
 				140D03442EB819D0004F66E1 /* Client.swift in Sources */,
+				BE8F754B2EE11E32005B13EA /* PdfGenerator.swift in Sources */,
 				141CE5312EC43B2A0058B6EA /* FormTextField.swift in Sources */,
 				140D03452EB819D0004F66E1 /* QuickInvoiceApp.swift in Sources */,
 				140D03462EB819D0004F66E1 /* LineItem.swift in Sources */,
