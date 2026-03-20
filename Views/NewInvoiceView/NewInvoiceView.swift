@@ -11,6 +11,7 @@ import SwiftData
 struct NewInvoiceView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var appContainer: AppContainer
     
     @State private var viewModel: NewInvoiceViewModel?
     
@@ -29,8 +30,10 @@ struct NewInvoiceView: View {
             } else {
                 ProgressView()
                     .onAppear {
-                        // Initialize viewModel with modelContext from environment
-                        self.viewModel = NewInvoiceViewModel(modelContext: modelContext)
+                        self.viewModel = NewInvoiceViewModel(
+                            invoiceRepository: appContainer.invoiceRepository,
+                            invoiceNumberService: appContainer.invoiceNumberService
+                        )
                     }
             }
         }
@@ -58,8 +61,8 @@ struct NewInvoiceView: View {
                             DatePicker(
                                 "Invoice Date",
                                 selection: Binding(
-                                    get: { viewModel.invoiceDate },
-                                    set: { viewModel.invoiceDate = $0 }
+                                    get: { viewModel.draft.invoiceDate },
+                                    set: { viewModel.draft.invoiceDate = $0 }
                                 ),
                                 displayedComponents: .date
                             )
@@ -74,8 +77,8 @@ struct NewInvoiceView: View {
                             Text("Job #")
                                 .font(Constants.bodyFont)
                             TextField("Optional", text: Binding(
-                                get: { viewModel.jobNumber },
-                                set: { viewModel.jobNumber = $0 }
+                                get: { viewModel.draft.jobNumber },
+                                set: { viewModel.draft.jobNumber = $0 }
                             ))
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(width: 120)
@@ -96,7 +99,7 @@ struct NewInvoiceView: View {
                             .foregroundColor(Constants.requiredFieldColor)
                     }
                     
-                    if let client = viewModel.client {
+                    if let client = viewModel.draft.client {
                         ClientInfoCard(client: client) {
                             viewModel.removeClient()
                         }
@@ -131,8 +134,8 @@ struct NewInvoiceView: View {
                             .foregroundColor(Constants.requiredFieldColor)
                     }
                     
-                    if !viewModel.lineItems.isEmpty {
-                        ForEach(Array(viewModel.lineItems.enumerated()), id: \.offset) { index, item in
+                    if !viewModel.draft.lineItems.isEmpty {
+                        ForEach(Array(viewModel.draft.lineItems.enumerated()), id: \.offset) { index, item in
                             LineItemCard(item: item) {
                                 viewModel.removeLineItem(at: index)
                             }
@@ -210,8 +213,7 @@ struct NewInvoiceView: View {
             set: { viewModel.showingClientForm = $0 }
         )) {
             ClientFormView(modelContext: modelContext) { newClient in
-                viewModel.client = newClient
-                viewModel.showingClientForm = false
+                viewModel.addClient(newClient)
             }
         }
         .sheet(isPresented: Binding(
@@ -219,8 +221,7 @@ struct NewInvoiceView: View {
             set: { viewModel.showingItemForm = $0 }
         )) {
             ItemFormView(modelContext: modelContext) { newItems in
-                viewModel.lineItems.append(contentsOf: newItems)
-                viewModel.showingItemForm = false
+                viewModel.addLineItems(newItems)
             }
         }
         .sheet(isPresented: $showingPDFPreview) {

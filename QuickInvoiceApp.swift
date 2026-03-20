@@ -11,6 +11,7 @@ import SwiftData
 @main
 struct QuickInvoiceApp: App {
     let modelContainer: ModelContainer
+    let appContainer: AppContainer
     @StateObject private var invoiceListVM = InvoiceListViewModel()
     @StateObject private var personalInfoVM = PersonalInfoViewModel()
     @StateObject private var businessInfoVM = BusinessInfoViewModel()
@@ -25,6 +26,7 @@ struct QuickInvoiceApp: App {
                 PersonInfo.self,
                 BusinessInfo.self
             )
+            appContainer = AppContainer(modelContext: modelContainer.mainContext)
         } catch {
             fatalError("Failed to initialize ModelContainer: \(error)")
         }
@@ -35,6 +37,7 @@ struct QuickInvoiceApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(appContainer)
                 .environmentObject(invoiceListVM)
                 .environmentObject(personalInfoVM)
                 .environmentObject(businessInfoVM)
