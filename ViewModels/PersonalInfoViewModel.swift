@@ -47,7 +47,6 @@ final class PersonalInfoViewModel: ObservableObject {
         email.isValidEmail
     }
     
-    /// Called from the view when we find an existing PersonInfo in SwiftData
         func load(from entity: PersonInfo) {
             // Avoid reloading if we already attached this one
             guard personInfo == nil else { return }
@@ -65,7 +64,6 @@ final class PersonalInfoViewModel: ObservableObject {
 
         case .phone:
             errors[.phone] = phone.isBlank ? "Phone is required" : nil
-            // You can add format checks here if needed.
 
         case .email:
             if email.isBlank { errors[.email] = "Email is required" }
@@ -79,7 +77,6 @@ final class PersonalInfoViewModel: ObservableObject {
     }
     
     
-    /// Validate everything at once (e.g., when tapping Save)
     @discardableResult
     func validateAll() -> Bool {
         ProfileField.allCases.forEach { validate($0) }

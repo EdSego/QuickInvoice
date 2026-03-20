@@ -50,9 +50,7 @@ final class BusinessInfoViewModel: ObservableObject {
         !businessEmail.isValidEmail.description.isEmpty
     }
     
-    /// Load data from an existing BusinessInfo (called from the view)
     func load(from entity: BusinessInfo) {
-        // Avoid re-binding if we're already working with one
         guard businessInfo == nil || businessInfo !== entity else { return }
         
         businessInfo      = entity
@@ -64,10 +62,9 @@ final class BusinessInfoViewModel: ObservableObject {
     }
     
     
-    /// Save changes to SwiftData
+    // Save changes to SwiftData
     func save(context: ModelContext) {
         guard isValid else {
-            // You could later hook this up to error UI if you want
             print("Business info not valid, not saving")
             return
         }

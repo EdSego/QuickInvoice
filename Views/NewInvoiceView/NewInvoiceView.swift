@@ -241,7 +241,6 @@ struct NewInvoiceView: View {
         }
     }
     
-    // MARK: - Create Invoice Handler
     
     private func handleCreateInvoice(viewModel: NewInvoiceViewModel) {
         // Create and save the invoice
@@ -270,7 +269,7 @@ struct NewInvoiceView: View {
     }
 }
 
-// MARK: - Support Views
+ 
 
 struct ClientInfoCard: View {
     let client: Client
@@ -347,7 +346,6 @@ struct LineItemCard: View {
     }
 }
 
-// MARK: - Preview
 
 #Preview {
     NewInvoiceView()

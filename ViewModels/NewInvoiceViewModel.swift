@@ -84,4 +84,28 @@ class NewInvoiceViewModel {
             return nil
         }
     }
+    
+    
+    private func generateInvoiceNumber() -> String {
+        let descriptor = FetchDescriptor<Invoice>(
+            sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
+        )
+        
+        guard let invoices = try? modelContext.fetch(descriptor),
+              let lastInvoice = invoices.first else {
+            // No invoices exist yet, start at 001
+            return "INVOICE001"
+        }
+        
+        // Extract number from last invoice (e.g., "INVOICE042" -> 42)
+        let lastNumber = lastInvoice.invoiceNumber.replacingOccurrences(of: "INVOICE", with: "")
+        
+        if let number = Int(lastNumber) {
+            let nextNumber = number + 1
+            return String(format: "INVOICE%03d", nextNumber)
+        }
+        
+        // Fallback if parsing fails
+        return "INVOICE001"
+    }
 }

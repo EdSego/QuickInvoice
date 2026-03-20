@@ -89,7 +89,6 @@ struct PDFPreviewView: View {
         }
     }
     
-    /// Saves the PDF data to a temporary file for sharing
     private func savePDFToTemp() -> URL? {
         let fileName = "Invoice-\(invoice.invoiceNumber).pdf"
         let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
@@ -104,7 +103,6 @@ struct PDFPreviewView: View {
     }
 }
 
-// MARK: - PDFKit View Wrapper
 
 struct PDFKitView: UIViewRepresentable {
     let data: Data
@@ -134,7 +132,6 @@ struct PDFKitView: UIViewRepresentable {
     }
 }
 
-// MARK: - Share Sheet
 
 struct ShareSheet: UIViewControllerRepresentable {
     let items: [Any]
@@ -159,7 +156,6 @@ struct ShareSheet: UIViewControllerRepresentable {
     }
 }
 
-// MARK: - Preview
 
 #Preview {
     // Create a mock invoice for preview

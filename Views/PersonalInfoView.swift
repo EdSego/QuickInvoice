@@ -141,7 +141,6 @@ struct PersonalInfoView: View {
                     }
                 }
             }
-            // Mark fields as touched when they LOSE focus
             .onChange(of: focus) { old, new in
                 if let old, new != old {
                     viewModel.touched.insert(old)
